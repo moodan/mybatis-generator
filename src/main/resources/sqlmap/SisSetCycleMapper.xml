@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangyin.sis.account.dao.SisSetCycleMapper" >
+  <resultMap id="BaseResultMap" type="com.wangyin.sis.account.entity.SisSetCycle" >
+    <id column="SET_CYCLE_ID" property="setCycleId" jdbcType="VARCHAR" />
+    <result column="SET_CYCLE_NAME" property="setCycleName" jdbcType="VARCHAR" />
+    <result column="SET_CYCLE_TYPE" property="setCycleType" jdbcType="VARCHAR" />
+    <result column="DELAY_NUM" property="delayNum" jdbcType="DECIMAL" />
+    <result column="SET_CYCLE_TIMES" property="setCycleTimes" jdbcType="DECIMAL" />
+    <result column="FORCE_SET_DATE" property="forceSetDate" jdbcType="VARCHAR" />
+    <result column="MODIFIER" property="modifier" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFIED_DATE" property="modifiedDate" jdbcType="TIMESTAMP" />
+    <result column="SET_CYCLE_START_DATE" property="setCycleStartDate" jdbcType="DECIMAL" />
+    <result column="MANY_SET_TIMES" property="manySetTimes" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SET_CYCLE_ID, SET_CYCLE_NAME, SET_CYCLE_TYPE, DELAY_NUM, SET_CYCLE_TIMES, FORCE_SET_DATE, 
+    MODIFIER, CREATED_DATE, MODIFIED_DATE, SET_CYCLE_START_DATE, MANY_SET_TIMES
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wangyin.sis.account.entity.SisSetCycleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SIS_SET_CYCLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SIS_SET_CYCLE
+    where SET_CYCLE_ID = #{setCycleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SIS_SET_CYCLE
+    where SET_CYCLE_ID = #{setCycleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wangyin.sis.account.entity.SisSetCycleExample" >
+    delete from SIS_SET_CYCLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wangyin.sis.account.entity.SisSetCycle" >
+    insert into SIS_SET_CYCLE (SET_CYCLE_ID, SET_CYCLE_NAME, SET_CYCLE_TYPE, 
+      DELAY_NUM, SET_CYCLE_TIMES, FORCE_SET_DATE, 
+      MODIFIER, CREATED_DATE, MODIFIED_DATE, 
+      SET_CYCLE_START_DATE, MANY_SET_TIMES)
+    values (#{setCycleId,jdbcType=VARCHAR}, #{setCycleName,jdbcType=VARCHAR}, #{setCycleType,jdbcType=VARCHAR}, 
+      #{delayNum,jdbcType=DECIMAL}, #{setCycleTimes,jdbcType=DECIMAL}, #{forceSetDate,jdbcType=VARCHAR}, 
+      #{modifier,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP}, 
+      #{setCycleStartDate,jdbcType=DECIMAL}, #{manySetTimes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wangyin.sis.account.entity.SisSetCycle" >
+    insert into SIS_SET_CYCLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="setCycleId != null" >
+        SET_CYCLE_ID,
+      </if>
+      <if test="setCycleName != null" >
+        SET_CYCLE_NAME,
+      </if>
+      <if test="setCycleType != null" >
+        SET_CYCLE_TYPE,
+      </if>
+      <if test="delayNum != null" >
+        DELAY_NUM,
+      </if>
+      <if test="setCycleTimes != null" >
+        SET_CYCLE_TIMES,
+      </if>
+      <if test="forceSetDate != null" >
+        FORCE_SET_DATE,
+      </if>
+      <if test="modifier != null" >
+        MODIFIER,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE,
+      </if>
+      <if test="setCycleStartDate != null" >
+        SET_CYCLE_START_DATE,
+      </if>
+      <if test="manySetTimes != null" >
+        MANY_SET_TIMES,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="setCycleId != null" >
+        #{setCycleId,jdbcType=VARCHAR},
+      </if>
+      <if test="setCycleName != null" >
+        #{setCycleName,jdbcType=VARCHAR},
+      </if>
+      <if test="setCycleType != null" >
+        #{setCycleType,jdbcType=VARCHAR},
+      </if>
+      <if test="delayNum != null" >
+        #{delayNum,jdbcType=DECIMAL},
+      </if>
+      <if test="setCycleTimes != null" >
+        #{setCycleTimes,jdbcType=DECIMAL},
+      </if>
+      <if test="forceSetDate != null" >
+        #{forceSetDate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDate != null" >
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="setCycleStartDate != null" >
+        #{setCycleStartDate,jdbcType=DECIMAL},
+      </if>
+      <if test="manySetTimes != null" >
+        #{manySetTimes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wangyin.sis.account.entity.SisSetCycleExample" resultType="java.lang.Integer" >
+    select count(*) from SIS_SET_CYCLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SIS_SET_CYCLE
+    <set >
+      <if test="record.setCycleId != null" >
+        SET_CYCLE_ID = #{record.setCycleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.setCycleName != null" >
+        SET_CYCLE_NAME = #{record.setCycleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.setCycleType != null" >
+        SET_CYCLE_TYPE = #{record.setCycleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delayNum != null" >
+        DELAY_NUM = #{record.delayNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.setCycleTimes != null" >
+        SET_CYCLE_TIMES = #{record.setCycleTimes,jdbcType=DECIMAL},
+      </if>
+      <if test="record.forceSetDate != null" >
+        FORCE_SET_DATE = #{record.forceSetDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifier != null" >
+        MODIFIER = #{record.modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdDate != null" >
+        CREATED_DATE = #{record.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifiedDate != null" >
+        MODIFIED_DATE = #{record.modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.setCycleStartDate != null" >
+        SET_CYCLE_START_DATE = #{record.setCycleStartDate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.manySetTimes != null" >
+        MANY_SET_TIMES = #{record.manySetTimes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SIS_SET_CYCLE
+    set SET_CYCLE_ID = #{record.setCycleId,jdbcType=VARCHAR},
+      SET_CYCLE_NAME = #{record.setCycleName,jdbcType=VARCHAR},
+      SET_CYCLE_TYPE = #{record.setCycleType,jdbcType=VARCHAR},
+      DELAY_NUM = #{record.delayNum,jdbcType=DECIMAL},
+      SET_CYCLE_TIMES = #{record.setCycleTimes,jdbcType=DECIMAL},
+      FORCE_SET_DATE = #{record.forceSetDate,jdbcType=VARCHAR},
+      MODIFIER = #{record.modifier,jdbcType=VARCHAR},
+      CREATED_DATE = #{record.createdDate,jdbcType=TIMESTAMP},
+      MODIFIED_DATE = #{record.modifiedDate,jdbcType=TIMESTAMP},
+      SET_CYCLE_START_DATE = #{record.setCycleStartDate,jdbcType=DECIMAL},
+      MANY_SET_TIMES = #{record.manySetTimes,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wangyin.sis.account.entity.SisSetCycle" >
+    update SIS_SET_CYCLE
+    <set >
+      <if test="setCycleName != null" >
+        SET_CYCLE_NAME = #{setCycleName,jdbcType=VARCHAR},
+      </if>
+      <if test="setCycleType != null" >
+        SET_CYCLE_TYPE = #{setCycleType,jdbcType=VARCHAR},
+      </if>
+      <if test="delayNum != null" >
+        DELAY_NUM = #{delayNum,jdbcType=DECIMAL},
+      </if>
+      <if test="setCycleTimes != null" >
+        SET_CYCLE_TIMES = #{setCycleTimes,jdbcType=DECIMAL},
+      </if>
+      <if test="forceSetDate != null" >
+        FORCE_SET_DATE = #{forceSetDate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null" >
+        MODIFIER = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDate != null" >
+        MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="setCycleStartDate != null" >
+        SET_CYCLE_START_DATE = #{setCycleStartDate,jdbcType=DECIMAL},
+      </if>
+      <if test="manySetTimes != null" >
+        MANY_SET_TIMES = #{manySetTimes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SET_CYCLE_ID = #{setCycleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wangyin.sis.account.entity.SisSetCycle" >
+    update SIS_SET_CYCLE
+    set SET_CYCLE_NAME = #{setCycleName,jdbcType=VARCHAR},
+      SET_CYCLE_TYPE = #{setCycleType,jdbcType=VARCHAR},
+      DELAY_NUM = #{delayNum,jdbcType=DECIMAL},
+      SET_CYCLE_TIMES = #{setCycleTimes,jdbcType=DECIMAL},
+      FORCE_SET_DATE = #{forceSetDate,jdbcType=VARCHAR},
+      MODIFIER = #{modifier,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      MODIFIED_DATE = #{modifiedDate,jdbcType=TIMESTAMP},
+      SET_CYCLE_START_DATE = #{setCycleStartDate,jdbcType=DECIMAL},
+      MANY_SET_TIMES = #{manySetTimes,jdbcType=VARCHAR}
+    where SET_CYCLE_ID = #{setCycleId,jdbcType=VARCHAR}
+  </update>
+</mapper>
