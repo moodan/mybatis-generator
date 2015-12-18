@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!-- 数据库驱动包位置 -->
     <!--
     <classPathEntry location="D:\generator\mysql-connector-java-5.1.22-bin.jar" />
     -->
-    <classPathEntry location="C:\Users\liuchuan\.m2\repository\com\oracle\ojdbc14\10.2.0.5\ojdbc14-10.2.0.5.jar" />
+    <classPathEntry location="C:\Users\liuchuan\.m2\repository\com\oracle\ojdbc14\10.2.0.5\ojdbc14-10.2.0.5.jar"/>
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <commentGenerator>
-            <property name="suppressAllComments" value="true" />
+            <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!-- 数据库链接URL、用户名、密码 -->
         <!--
          <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.193.123:3306/wychange" userId="wychange" password="wychange"> -->
-        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@172.24.0.27:1521:devdb2" userId="clearing" password="clearing">
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@172.24.0.16:1521:testdb1" userId="accore" password="accore">
         </jdbcConnection>
         <javaTypeResolver>
-            <property name="forceBigDecimals" value="false" />
+            <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置 -->
         <javaModelGenerator targetPackage="com.wangyin.sis.account.entity" targetProject="src/main/java">
-            <property name="enableSubPackages" value="true" />
-            <property name="trimStrings" value="true" />
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成的映射文件包名和位置 -->
         <sqlMapGenerator targetPackage="sqlmap" targetProject="src/main/resources">
-            <property name="enableSubPackages" value="true" />
+            <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.wangyin.sis.account.dao" targetProject="src/main/java">
-            <property name="enableSubPackages" value="true" />
+            <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
         <!--
         <table tableName="SERVICE_ORDER_HISTORY" domainObjectName="ServiceOrderHistory" />-->
 
-        <table tableName="SIS_SET_CYCLE" domainObjectName="SisSetCycle" />
+        <table schema="ACCORE" tableName="ACCOUNT_DAILY_REPORT" domainObjectName="AccountDailyReport"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="true"/>
+        </table>
 
 
     </context>
