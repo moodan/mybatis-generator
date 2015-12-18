@@ -40,7 +40,7 @@
         <table schema="ACCORE" tableName="ACCOUNT_DAILY_REPORT" domainObjectName="AccountDailyReport"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
         </table>
 
 
