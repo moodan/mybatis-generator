@@ -15,7 +15,7 @@
         <!--
          <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.193.123:3306/wychange" userId="wychange" password="wychange"> -->
         <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-                        connectionURL="jdbc:oracle:thin:@172.24.0.16:1521:testdb1" userId="accore" password="accore">
+                        connectionURL="" userId="" password="">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
